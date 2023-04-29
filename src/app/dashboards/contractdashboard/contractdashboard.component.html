@@ -1,0 +1,24 @@
+<!--
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-8 my-auto"><h1 class="my-auto"><strong>Deine Finanzen </strong></h1>
+    <p *ngFor="let contract of contracts">{{contract .name}}</p></div>
+    <div class="col-4"><app-contract-filter  [contracts]="contracts"></app-contract-filter></div>
+  </div>
+-->
+
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-8 my-auto">
+      <h1 class="my-auto"><strong>Deine Finanzen </strong></h1>
+      <p *ngFor="let entry of entries">{{ entry.name }} | {{ entry.datum }}</p>
+    </div>
+    <div class="col-4">
+      <app-contract-filter
+        (yearSelected)="onYearSelected($event)"
+        (contractSelected)="onContractSelected($event)"
+        [contracts]="contracts"
+      ></app-contract-filter>
+    </div>
+  </div>
+</div>

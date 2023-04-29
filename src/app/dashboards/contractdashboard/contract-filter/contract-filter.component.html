@@ -1,0 +1,21 @@
+<p>contract-filter works!</p>
+<div class="input-group">
+  <!--<select class="form-select form-select-lg m-3" aria-label=".form-select-lg example"id="monthSelect" [(ngModel)]="selectedMonth" (change)="onMonthSelected()">
+    <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
+
+  </select>-->
+
+
+  <span class="input-group-btn" style="width:0px;"></span>
+  <select class="form-select form-select-lg m-3" aria-label=".form-select-lg example" [(ngModel)]="selectedContract" (change)="onContractSelected()">
+    <option *ngFor="let contract of contracts" [value]="contract.id" >{{ contract.name }}</option>
+
+  </select>
+
+  <span class="input-group-btn" style="width:0px;"></span>
+  <select class="form-select form-select-lg m-3" aria-label=".form-select-lg example" [(ngModel)]="selectedYear" (change)="onYearSelected()">
+    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+
+  </select>
+
+</div>

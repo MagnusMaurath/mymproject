@@ -1,0 +1,53 @@
+<app-normal-card [cardTitle]="'test1231232'"  [buttonLabel]="buttonLabel" (buttonClickNormalCard)="onButtonClick()" (toggleChange)="onToggle($event)">
+  <!-- Header -->
+
+
+  <dx-chart id="chart" [dataSource]="stackedBarChartdata"  [palette]="colors">
+    <dxi-series *ngFor="let category of categories" valueField="{{category}}" name="{{category}}" > </dxi-series>
+
+<dxi-value-axis
+    valueType="numeric">
+</dxi-value-axis>
+
+
+    <dxo-common-series-settings argumentField="Art" type="fullStackedBar" >
+    </dxo-common-series-settings>
+
+    <dxo-legend
+    [visible]="false"
+      verticalAlignment="top"
+      horizontalAlignment="center"
+      itemTextPosition="right">
+    </dxo-legend>
+    <dxo-tooltip
+    [enabled]="true"
+    [customizeTooltip]="customizeTooltipFunction"
+    format="millions">
+  </dxo-tooltip>
+
+
+  </dx-chart>
+
+
+
+
+
+
+
+
+<!--
+  <ng-container *ngIf="toggleCheck">
+    <ngx-charts-bar-vertical-stacked
+      [results]="categoriesExpensesAndRevenues"
+      [scheme]="colorScheme"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxis]="true"
+      [yAxis]="true"
+
+    >
+    </ngx-charts-bar-vertical-stacked>
+    </ng-container>
+-->
+
+</app-normal-card>

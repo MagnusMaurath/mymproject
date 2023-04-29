@@ -1,0 +1,37 @@
+<p>login works!</p>
+<div class="card p-3">
+  <h2>The Battle Create Component</h2>
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input
+        #emailInput="ngModel"
+        matInput
+        type="email"
+        class="form-control"
+        aria-describedby="emailHelp"
+        name="email"
+        ngModel
+        required
+        placeholder="Email"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Password</label>
+      <input
+        type="password"
+        matInput
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        name="password"
+        required
+        placeholder="Passwort"
+        #passwordInput="ngModel"
+        ngModel
+      />
+    </div>
+
+    <button class="btn btn-primary mt-3 w-100" type="submit">Login</button>
+  </form>
+</div>

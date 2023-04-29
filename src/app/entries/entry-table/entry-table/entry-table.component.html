@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>{{ selectedMonth }}</h1>
+  <h1>{{ selectedYear }}</h1>
+  <button (click)="onPreviousMonth()">left</button>
+  <button (click)="onNextMonth()">right</button>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Datum</th>
+            <th scope="col">Name</th>
+            <th scope="col">Preis</th>
+            <th scope="col">UserID</th>
+            <th scope="col">CategoryID</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of entries">
+            <ng-container>
+              <th scope="row">{{ entry["datum"] }}</th>
+              <td>{{ entry["name"] }}</td>
+              <td>{{ entry["preis"] }} €</td>
+              <td>{{ entry["userId"] }}</td>
+              <td>{{ entry["categoryName"] }}</td>
+              <td>
+                <button type="button" class="btn btn-success">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button type="button" class="btn btn-danger">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+      {{ totalExpanses }}
+      <mat-paginator
+        [length]="totalEntries"
+        [pageSize]="entriesPerPage"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onChangePage($event)"
+      ></mat-paginator>
+    </div>
+  </div>
+</div>

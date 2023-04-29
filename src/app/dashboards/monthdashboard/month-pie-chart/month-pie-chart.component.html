@@ -1,0 +1,36 @@
+<app-normal-card [cardTitle]="'test'" (toggleChange)="onToggle($event)">
+    <ng-container  class="p-5">
+    <div class="card-content">
+
+        <ng-container *ngIf="toggleCheck">
+    <dx-pie-chart
+      id="pie"
+      type="doughnut"
+      [palette]="palette"
+      [dataSource]="categoriesSum"
+    >
+      <dxi-series argumentField="categoryName" valueField="total">
+        <dxo-label [visible]="false">
+          <dxo-connector [visible]="false" [width]="1"></dxo-connector>
+        </dxo-label>
+      </dxi-series>
+
+      <dxo-export [enabled]="false"></dxo-export>
+      <dxo-legend [visible]="false"
+        horizontalAlignment="center"
+        verticalAlignment="bottom"
+      ></dxo-legend>
+      <dxo-tooltip
+        [enabled]="true"
+        [customizeTooltip]="customizeTooltipFunction"
+        format="millions">
+      </dxo-tooltip>
+    </dx-pie-chart>
+  </ng-container>
+
+
+  </div>
+  </ng-container>
+</app-normal-card>
+
+

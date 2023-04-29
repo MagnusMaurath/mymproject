@@ -1,0 +1,49 @@
+<div class="card p-3">
+  <h2>The Battle Create Component</h2>
+  <form (submit)="onAddEntry(entryForm)" #entryForm="ngForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Titel</label>
+      <input
+        type="text"
+        name="name"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Titel"
+        ngModel
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Preis</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        name="preis"
+        ngModel
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group mb-3">
+        <select
+          class="custom-select"
+          id="inputGroupSelect01"
+          name="category"
+          ngModel
+        >
+          <option *ngFor="let category of categories">
+            {{ category["name"] }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn btn-primary mt-3 w-100" type="submit">
+      Save Battle
+    </button>
+  </form>
+</div>

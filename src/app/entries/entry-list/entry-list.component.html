@@ -1,0 +1,18 @@
+<div class="card p-5" *ngIf="entries.length > 0">
+  <mat-accordion multi="true">
+    <mat-expansion-panel *ngFor="let entry of entries">
+      <mat-expansion-panel-header>
+        {{ entry["name"] }} {{ entry["id"] }} {{ entry["userId"] }}
+      </mat-expansion-panel-header>
+      <p>{{ entry["preis"] }}</p>
+      <mat-action-row *ngIf="userId == entry.userId">
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-danger" (click)="onDelete(entry.id)">
+          Delete
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<p *ngIf="entries.length == 0">No Posts added yet!</p>

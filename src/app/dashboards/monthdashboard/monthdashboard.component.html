@@ -1,0 +1,71 @@
+<div class="container">
+  <!-- REIHE 1 -->
+  <div class="row headerbereich">
+    <div class="col-8 my-auto">
+      <h1 class="my-auto">
+        <strong>Deine Finanzen im <span class="maincolor"> {{ selectedMonthName  }}  {{ selectedYear  }}</span></strong>
+      </h1>
+    </div>
+    <div class="col-4">
+      <app-month-filter-list
+        (monthSelected)="onMonthSelected($event)"
+        (yearSelected)="onYearSelected($event)"
+      ></app-month-filter-list>
+    </div>
+  </div>
+
+  <!-- REIHE 1 -->
+  <div class="row">
+    <div class="col-8">
+      <div class="row">
+        <div class="col-12">
+          <app-three-stats-list
+            class=""
+            [stat1]="totalExpanses"
+          ></app-three-stats-list>
+        </div>
+
+        <div class="col-6">
+          <div class="ng-container mt-3">
+        <!-- <app-month-pie-chart
+              [categoriesSum]="categoriesSum"
+            ></app-month-pie-chart>-->
+            <app-month-pie-chart  [entries]="entries"
+
+            ></app-month-pie-chart>
+          </div>
+        </div>
+        <div class="col-6">
+
+          <div class="ng-container mt-3  ">
+            <app-month-bar-chart
+            [entries]="entries"
+            ></app-month-bar-chart>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <ng-container *ngIf="entries">
+        <app-activity-list [entries]="entries"></app-activity-list>
+      </ng-container>
+    </div>
+    <div class="col-6">
+<h1>test</h1>
+<app-normal-card></app-normal-card>
+
+    </div>
+    <div class="col-6">
+      <h1>test</h1>
+      <app-normal-card ></app-normal-card>
+
+          </div>
+
+    <!-- <button (click)="onPreviousMonth()">left</button>
+    <button (click)="onNextMonth()">right</button>-->
+
+    <!-- <div class="col-4"><app-entry-create></app-entry-create></div>
+    <div class="col-6"><app-entry-table></app-entry-table></div>-->
+  </div>
+</div>
