@@ -1,9 +1,11 @@
 <app-normal-card [cardTitle]="'test'" (toggleChange)="onToggle($event)">
     <ng-container  class="p-5">
-    <div class="card-content">
 
-        <ng-container *ngIf="toggleCheck">
-    <dx-pie-chart
+
+    <ng-container *ngIf="toggleCheck">
+
+
+      <dx-pie-chart  id="3"
       id="pie"
       type="doughnut"
       [palette]="palette"
@@ -29,7 +31,123 @@
   </ng-container>
 
 
+
+  <ng-container *ngIf="!toggleCheck">
+    <table  id="datatable"
+    class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+      <thead class="thead-light">
+        <tr>
+          <th>Icon</th>
+          <th class="table-column-ps-0">Full name</th>
+
+          <th>
+            Preis <span class="glyphicon glyphicon-triangle-bottom"></span>
+          </th>
+        </tr>
+      </thead>
+
+    </table>
+  <div id="2" class="table-responsive datatable-custom">
+    <div class="my-custom-scrollbar-third">
+    <table
+      id="datatable"
+      class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
+      data-hs-datatables-options='{
+        "columnDefs": [{
+           "targets": [0, 1, 4],
+           "orderable": false
+         }],
+        "order": [],
+        "info": {
+          "totalQty": "#datatableWithPaginationInfoTotalQty"
+        },
+        "search": "#datatableSearch",
+        "entries": "#datatableEntries",
+        "pageLength": 8,
+        "isResponsive": false,
+        "isShowPaging": false,
+        "pagination": "datatablePagination"
+      }'>
+
+
+
+      <tbody >
+        <tr class="mym-tableborder" *ngFor="let categoryEntry of categoriesSum">
+          <td>
+            <div class="flex-shrink-0">
+              <div class="avatar avatar-sm avatar-soft-dark avatar-circle">
+                <span
+                  class="avatar-initials"
+                  [ngStyle]="{ 'font-family': 'Fontello' }"
+                  [innerHTML]="categoryEntry['categoryIcon']"
+                >
+                </span>
+              </div>
+            </div>
+          </td>
+          <td class="table-column-ps-0">
+            <div class="flex-grow-1">
+              <h5 class="text-inherit mb-0">
+                {{ categoryEntry.categoryName }}<br />
+                {{ categoryEntry.entryCount }} Buchungen
+                <i
+                  class="bi-patch-check-fill text-primary"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Top endorsed"
+                ></i>
+              </h5>
+            </div>
+          </td>
+
+
+
+          <td  class='alnright'> <span class="cost">{{categoryEntry.total| number:'1.2-2' }} €</span><br />{{ categoryEntry.percentage | number:'1.2-2'}} %</td>
+        </tr>
+      </tbody>
+
+    </table>
+</div>
+<table  id="datatable"
+class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+  <thead class="thead-light">
+    <tr>
+      <th>Gesamt</th>
+
+
+      <th class="alnright cost ">
+        {{categoriesSumTotal| number:'1.2-2'}} €
+      </th>
+    </tr>
+  </thead>
+
+</table>
+
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </ng-container>
+
+
+
   </ng-container>
 </app-normal-card>
 

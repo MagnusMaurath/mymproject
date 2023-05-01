@@ -15,6 +15,14 @@ router.get(
   checkAuth,
   EntriesController.getEntriesOfSelectedMonth
 );
+
+router.get(
+  "/:userId/:selectedYear",
+  checkAuth,
+  EntriesController.getEntriesOfSelectedYear
+);
+
+
 router.get(
   "/contract/:userId/:contractId/:selectedYear",
   EntriesController.getEntriesOfContractOfYear
@@ -22,7 +30,7 @@ router.get(
 
 router.get("/month", EntriesController.getEntriesOfThisMonth);
 
-router.get("/year", EntriesController.getEntriesOfThisYear);
+//router.get("/year", EntriesController.getEntriesOfThisYear);
 
 router.delete("/:id", checkAuth, EntriesController.deleteEntry);
 

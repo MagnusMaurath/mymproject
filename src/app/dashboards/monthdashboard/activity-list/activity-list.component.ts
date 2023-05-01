@@ -13,8 +13,7 @@ export class ActivityListComponent {
   selectedOption: Entry[];
 
   ngOnInit() {
-    console.log('Die Einträgeas:');
-    console.log(this.entries);
+
   }
 
   onSort(event: Event) {
@@ -35,8 +34,7 @@ export class ActivityListComponent {
 
         break;
       case 'newdate':
-        console.log('Hey');
-        console.log(this.entries);
+
         this.entries.sort((a, b) => {
           // Konvertieren Sie die Daten in das richtige Format und subtrahieren Sie sie, um die Sortierreihenfolge zu bestimmen
           return new Date(b.datum).getTime() - new Date(a.datum).getTime();

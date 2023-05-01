@@ -27,12 +27,12 @@ export class MonthBarChartComponent {
   buttonLabel: string = "Click me in Component 2";
   toggleCheck:boolean = true;
   onButtonClick() {
-    console.log('Button clicked in Component 2');
+   // console.log('Button clicked in Component 2');
   }
   onToggle(value: boolean) {
     // Der Wert der Toggle-Komponente wird als Argument an die "console.log"-Methode übergeben, um eine Nachricht in der Konsole auszugeben.
     this.toggleCheck = value;
-    console.log('Toggle changed in Component 1: ' + value);
+  //  console.log('Toggle changed in Component 1: ' + value);
   }
 
   // <-- Deklarieren Sie die @Input-Eigenschaft
@@ -55,10 +55,7 @@ export class MonthBarChartComponent {
     this.stackedBarChartdata = this.groupEntriesByCategory(this.entries);
     this.categories = this.getCategoryNames(this.entries);
     this.colors  = this.getCategoryColors(this.entries);
-    console.log("A1");
-    console.log(this.categories);
-    console.log("B1");
-    console.log(this.stackedBarChartdata);
+
   }
 
 
@@ -114,7 +111,7 @@ export class MonthBarChartComponent {
   }
 
   customizeTooltipFunction(arg: any) {
-    console.log(arg);
+   // console.log(arg);
     return {
       text: `${arg.seriesName}: ${arg.value} €`,
     };

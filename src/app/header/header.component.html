@@ -57,9 +57,10 @@
 
 
 
-              <a routerLink="/" class="nav_link active" *ngIf="userIsAuthenticated"> 		<mat-icon>dashboard</mat-icon> <span class="nav_name">Dashboard</span> </a>
-              <a routerLink="/monthdashboard" class="nav_link" *ngIf="userIsAuthenticated">	<mat-icon> pin_drop</mat-icon> <span class="nav_name">Users</span> </a>
+              <a routerLink="/monthdashboard" class="nav_link active" *ngIf="userIsAuthenticated"> 		<mat-icon>dashboard</mat-icon> <span class="nav_name">Dashboard</span> </a>
+              <a routerLink="/yeardashboard" class="nav_link" *ngIf="userIsAuthenticated">	<mat-icon> pin_drop</mat-icon> <span class="nav_name">Year</span> </a>
               <a routerLink="/contractdashboard" class="nav_link" *ngIf="userIsAuthenticated"> <mat-icon>timelapse</mat-icon> <span class="nav_name">ContractDB</span> </a>
+              <a routerLink="/" class="nav_link" *ngIf="userIsAuthenticated"> <mat-icon>timelapse</mat-icon> <span class="nav_name">Nichts</span> </a>
               <a routerLink="/login" class="nav_link" *ngIf="!userIsAuthenticated"> 	<mat-icon>timelapse</mat-icon><span class="nav_name">Verträge</span> </a>
  </div>
         </div> <a href="#" class="nav_link"> 	<mat-icon> transit_enterexit</mat-icon><span class="nav_name">SignOut</span> </a>

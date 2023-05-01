@@ -1,0 +1,14 @@
+.cost {
+  color: #ad1414;
+  font-weight: 600;
+    line-height: 1.2;
+}
+
+.my-custom-scrollbar-third {
+  height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+    .alnright { text-align: right; }

@@ -89,6 +89,57 @@ export class EntriesService {
       });
   }
 
+  getEntriesOfYear(userId: any, selectedYear: number) {
+    //spreadoperator reference etc. Siehe Kapitel 27 MERN STACK UDEMY
+    this.http
+      .get<{ message: String; entries: any }>(
+        'http://localhost:3000/api/entries/' +
+          userId +
+          '/' +
+          selectedYear
+      )
+      .pipe(
+        map((entryData) => {
+          console.log("testtesttest");
+          console.log(entryData);
+          return {
+            entries: entryData.entries.map((entry) => {
+              const [r, g, b] = entry.category.color
+                .match(/\w\w/g)
+                .map((c) => parseInt(c, 16));
+              return {
+                id: entry.id,
+                name: entry.name,
+                preis: entry.preis,
+                datum: entry.datum,
+                userId: entry.userId,
+                revenue: entry.revenue,
+                categoryId: entry.categoryId,
+                categoryName: entry.category.name,
+                categoryIcon: entry.category.icon,
+                contractName: entry.contract ? entry.contract.name : '',
+
+                categoryColor: `rgba(${r}, ${g}, ${b}, 1)`,
+                categoryColorTransparent:
+                  'rgba(' +
+                  entry.category.color
+                    .substring(1)
+                    .match(/.{1,2}/g)
+                    .map((v) => parseInt(v, 16))
+                    .join(',') +
+                  ', 0.1)',
+
+              };
+            }),
+          };
+        })
+      )
+      .subscribe((transformedEntriesData) => {
+        this.entries = transformedEntriesData.entries;
+        this.entriesUpdated.next([...this.entries]);
+      });
+  }
+
   calculateCategoryExpenses(entries: any[]): any {
     const categoryExpenses = {};
     const categoriesSum = [];
@@ -126,6 +177,8 @@ export class EntriesService {
 
     return { categoryExpenses, categoriesSum };
   }
+
+
   calculateCategoryExpensesAndRevenues(categoriesSum: any[]): any {
     let categoriesExpensesAndRevenues = [
       { name: 'Ausgaben', series: [] },
