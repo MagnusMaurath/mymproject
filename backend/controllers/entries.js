@@ -62,6 +62,8 @@ exports.getEntries = (req, res, next) => {
 };
 
 const currentMonth = new Date().getMonth() + 1;
+
+
 exports.getEntriesOfThisMonth = (req, res, next) => {
   //const entry = await Entry.create({ name: "test", preis: 3, datum: "2023-03-03"});
   Entry.findAll({
@@ -84,16 +86,29 @@ exports.getEntriesOfThisMonth = (req, res, next) => {
 };
 
 const currentYear = new Date().getFullYear();
-exports.getEntriesOfThisYear = (req, res, next) => {
+exports.getEntriesOfSelectedYear = (req, res, next) => {
+  const selectedYear = req.params.selectedYear;
+  const userId = req.params.userId;
+  const startDate = new Date(`${selectedYear}-01-01`);
+  const endDate = new Date(`${selectedYear}-12-31`);
   Entry.findAll({
     where: {
       datum: {
-        [Op.and]: [
-          { [Op.gte]: `${currentYear}-01-01` },
-          { [Op.lt]: `${currentYear + 1}-01-01` },
-        ],
+        [Op.gte]: startDate,
+        [Op.lte]: endDate,
       },
+      userId: userId,
     },
+    include: [
+      {
+        model: Category,
+        as: "category",
+      },
+      {
+        model: Contract,
+        as: "contract",
+      },
+    ],
   }).then((entries) => {
     res.status(200).json({
       message: "Entries successfully fetched",
@@ -109,9 +124,6 @@ exports.getEntriesOfSelectedMonth = (req, res, next) => {
   const userId = req.params.userId;
   const today = new Date();
   const timezoneOffsetInMs = today.getTimezoneOffset() * 60 * 1000;
-  console.log(
-    "HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-  );
   const startDate = new Date(
     Date.UTC(selectedYear, selectedMonth - 1, 1) - timezoneOffsetInMs
   ).toISOString();

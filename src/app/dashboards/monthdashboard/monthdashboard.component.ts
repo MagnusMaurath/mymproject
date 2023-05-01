@@ -65,24 +65,16 @@ export class MonthDashboardComponent {
           }
         }
 
-      //  const { categoryExpenses, categoriesSum } =
-       // this.entriesService.calculateCategoryExpenses(this.entries);
-      //  this.categoriesSum = categoriesSum;
-
         const { categoriesExpensesAndRevenues, colors } =
           this.entriesService.calculateCategoryExpensesAndRevenues(
             this.categoriesSum
+            //HIER WIRD ES AUSGERECHNET
           );
         this.categoriesExpensesAndRevenues = categoriesExpensesAndRevenues;
         this.categoriesExpensesAndRevenuesColors = colors;
-
-
         this.selectedMonthName = this.getMonthName(+this.selectedMonth);
-
-
-        console.log("MONAT");
-        console.log(typeof this.selectedMonth);
-        console.log( this.selectedMonthName );
+        console.log("Montdashboard");
+        console.log(this.entries);
       });
 
     this.userisAuthenticated = this.authService.getIsAuth();
@@ -92,7 +84,28 @@ export class MonthDashboardComponent {
         this.userisAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
       });
+
   }
+
+
+  ngOnChange()
+ {
+  console.log("Montdashboard onchange");
+  console.log(this.entries);
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   onMonthSelected(month: number) {
     this.selectedMonth = month;
@@ -157,9 +170,6 @@ export class MonthDashboardComponent {
     }
     return monthName;
   }
-
-
-
 
 
   ngOnDestroy() {

@@ -4,6 +4,7 @@ import { Router } from 'express';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login/login.component';
 import { MonthDashboardComponent } from './dashboards/monthdashboard/monthdashboard.component';
+import { YeardashboardComponent } from './dashboards/yeardashboard/yeardashboard.component';
 import { EntryCreateComponent } from './entries/entry-create/entry-create.component';
 import { EntryListComponent } from './entries/entry-list/entry-list.component';
 import { ContractdashboardComponent } from './dashboards/contractdashboard/contractdashboard.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'monthdashboard',
     component: MonthDashboardComponent,
+  },
+  {
+    path: 'yeardashboard',
+    component: YeardashboardComponent,
   },
 
   {

@@ -9,8 +9,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatIconModule} from '@angular/material/icon';
 
 import {
-  DxButtonModule,
   DxDataGridModule,
+  DxSelectBoxModule,
+  DxCheckBoxModule,
+  DxButtonModule,
   DxTemplateModule,
   DxPieChartModule,
   DxChartModule,
@@ -44,6 +46,8 @@ import { TogglebuttonComponent } from './shared/buttons/togglebutton/togglebutto
 import { NormalCardComponent } from './shared/cards/normal-card/normal-card.component';
 import { TestbuttonComponent } from './shared/buttons/testbutton/testbutton.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { YeardashboardComponent } from './dashboards/yeardashboard/yeardashboard.component';
+import { YearFilterListComponent } from './dashboards/yeardashboard/year-filter-list/year-filter-list.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +72,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     TogglebuttonComponent,
     NormalCardComponent,
     TestbuttonComponent,
+    YeardashboardComponent,
+    YearFilterListComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +95,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     DxTemplateModule,
     NgxChartsModule,
     MatIconModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    DxDataGridModule,
+    DxSelectBoxModule,
+    DxCheckBoxModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
