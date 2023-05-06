@@ -265,26 +265,24 @@ export class EntriesService {
     return this.entriesUpdated.asObservable();
   }
 
-  addEntry(name: string, preis: number, datum: Date, revenue: number) {
+  addEntry(userId: any,name: string, preis: number, datum: Date,categoryId: number, revenue: number) {
     const entry: Entry = {
       id: null,
       name: name,
       preis: preis,
       datum: datum,
-      userId: null,
-      categoryId: null,
+      userId: userId,
+      categoryId:categoryId,
       revenue: revenue,
     };
-    this.http
-      .post<{ message: string; entryId: number }>(
-        'http://localhost:3000/api/entries',
-        entry
-      )
+
+    this.http.post<{ message: string}>('http://localhost:3000/api/entries',entry)
       .subscribe((responseData) => {
-        const entryId = responseData.entryId;
-        entry.id = entryId;
+        console.log("SERVICELOG");
+       // const entryId = responseData.entryId;
+       // entry.id = entryId;
         this.entries.push(entry);
-        this.entriesUpdated.next([...this.entries]);
+       this.entriesUpdated.next([...this.entries]);
       });
   }
 

@@ -35,7 +35,7 @@
           name="category"
           ngModel
         >
-          <option *ngFor="let category of categories">
+          <option *ngFor="let category of categories"  [value]="category.id" >
             {{ category["name"] }}
           </option>
         </select>

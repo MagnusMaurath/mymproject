@@ -1,12 +1,6 @@
 <p>yeardashboard works!</p>
 
-<!--
-<ul>
-  <li *ngFor="let entry of entries">
-    {{entry.name}}      {{entry.preis}}
-  </li>
-</ul>
--->
+
 <div class="container">
   <!-- REIHE 1 -->
   <div class="row headerbereich">
@@ -23,37 +17,35 @@
   </div>
 
 <div class="row">
+<div class="col-8">
+  <app-normal-card [cardTitle]="'test'">
+    <ng-container>
+
 <dx-data-grid
   id="gridContainer"
   [dataSource]="entries"
   keyExpr="id"
   [showBorders]="true"
+  class="p-2"
 >
-  <dxo-filter-row
-    [visible]="showFilterRow"
-    [applyFilter]="currentFilter"
-  ></dxo-filter-row>
+
   <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
-  <dxo-search-panel
-    [visible]="true"
-    [width]="240"
-    placeholder="Search..."
-  ></dxo-search-panel>
 
   <dxi-column
     dataField="datum"
-    alignment="right"
     dataType="date"
-    format=" dd.MM.yyyy "
-    [width]="120"
+    format="dd.MM.yyyy"
+    [width]="100"
     [calculateFilterExpression]="calculateFilterExpression"
   >
     <dxo-header-filter [dataSource]="orderHeaderFilter"></dxo-header-filter>
   </dxi-column>
   <dxi-column
     dataField="revenue"
-    alignment="right"
-
+    caption="Typ"
+    alignment="left"
+    [width]="100"
+    [customizeText]="priceColumn_customizeText"
   ></dxi-column>
 
 
@@ -66,7 +58,6 @@
   <dxi-column dataField="name"></dxi-column>
   <dxi-column
   dataField="preis"
-  alignment="right"
   format="currency"
   [editorOptions]="{ format: 'currency', showClearButton: true }"
 >
@@ -74,33 +65,34 @@
     [dataSource]="saleAmountHeaderFilter"
   ></dxo-header-filter>
 </dxi-column>
+
+<!------------------------------>
+<dxo-summary>
+
+  <dxi-total-item
+    column="preis"
+    summaryType="sum"
+    valueFormat="currency"
+  >
+  </dxi-total-item>
+</dxo-summary>
+<!------------------------------>
+<dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+  <dxo-paging [pageSize]="25"> </dxo-paging>
+  <dxo-pager
+    [visible]="true"
+    [allowedPageSizes]="allowedPageSizes"
+    [displayMode]="displayMode"
+    [showPageSizeSelector]="showPageSizeSelector"
+    [showInfo]="showInfo"
+    [showNavigationButtons]="showNavButtons"
+  >
+  </dxo-pager>
+
 </dx-data-grid>
-<div class="options">
-  <div class="caption">Options</div>
-  <div class="option">
-    <span>Apply Filter</span>
-    <dx-select-box
-      id="useFilterApplyButton"
-      [items]="applyFilterTypes"
-      [(value)]="currentFilter"
-      valueExpr="key"
-      displayExpr="name"
-      [disabled]="!showFilterRow"
-    ></dx-select-box>
-  </div>
-  <div class="option">
-    <dx-check-box
-      text="Filter Row"
-      [(value)]="showFilterRow"
-      (onValueChanged)="clearFilter()"
-    ></dx-check-box>
-  </div>
-  <div class="option">
-    <dx-check-box
-      text="Header Filter"
-      [(value)]="showHeaderFilter"
-      (onValueChanged)="clearFilter()"
-    ></dx-check-box>
-  </div>
+    </ng-container>
+  </app-normal-card>
 </div>
+
+
 </div>

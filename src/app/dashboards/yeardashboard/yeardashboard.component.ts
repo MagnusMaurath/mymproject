@@ -39,6 +39,18 @@ showFilterRow: boolean;
 
 showHeaderFilter: boolean;
 
+showPageSizeSelector = true;
+
+showInfo = true;
+
+displayMode = 'full';
+
+showNavButtons = true;
+
+readonly allowedPageSizes = [25, 50,100, 'all'];
+
+readonly displayModes = [{ text: "Display Mode 'full'", value: 'full' }, { text: "Display Mode 'compact'", value: 'compact' }];
+
 //
 
 
@@ -166,7 +178,13 @@ onYearSelected(year: number) {
 
 
 
-
+priceColumn_customizeText (cellInfo) {
+  if(cellInfo.value=="0") {
+  return "Ausgabe";
+} else {
+  return "Einnahme";
+}
+}
 
 
 

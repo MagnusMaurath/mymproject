@@ -6,7 +6,8 @@ const checkAuth = require("../middleware/check-auth");
 const EntriesController = require("../controllers/entries");
 
 //... /api/entries
-router.post("",  EntriesController.createEntry);
+router.post("" ,  EntriesController.createEntry);
+
 
 router.get("", EntriesController.getEntries);
 

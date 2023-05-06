@@ -38,9 +38,11 @@ export class EntryCreateComponent {
     }
 
     this.entriesService.addEntry(
+      this.userId,
       form.value.name,
       form.value.preis,
       form.value.datum,
+      form.value.category,
       form.value.revenue
     );
     form.resetForm();

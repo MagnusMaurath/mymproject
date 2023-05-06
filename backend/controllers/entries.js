@@ -1,11 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-//const { sequelize } = require("../modernDBConnection");
-//const { Entry } = require("../models/Entry");
-//const { User } = require("../models/User");
 const db = require("../models");
 const { Op } = require("sequelize");
-//const { Category } = require("../models/Category");
 
 const Entry = db.entries;
 const Category = db.categories;
@@ -13,24 +9,40 @@ const User = db.users;
 const Contract = db.contracts;
 
 exports.createEntry = (req, res, next) => {
-  //const entry = await Entry.create({ name: "test", preis: 3, datum: "2023-03-03"});
+  //const entry = Entry.create({ name: "test", preis: 3, datum: "2023-03-03"});
 
-  (async () => {
-    await sequelize.sync();
-    const entry = await Entry.create({
-      name: req.body.name,
-      preis: req.body.preis,
-      datum: "2023-03-03",
-      userId: req.userData.userId,
-    });
-    console.log(req.userData);
+  const entry = req.body;
+
+  console.log(entry);
+  //const userId = req.params.userId;
+  /*
+  Entry.create(entry)
+  .then(() => {
     res.status(201).json({
-      message: "Entry added successfullyy",
-      entryId: entry.id,
+      message: "Entry added successfully"
     });
-    console.log(entry);
-  })();
+  })
+  .catch(error => {
+    console.error("Error creating entry", error);
+    res.status(500).json({
+      message: "Error creating entry"
+    });
+  });
+*/
+
+
 };
+
+
+
+
+
+
+
+
+
+
+
 
 /*exports.getEntries = (req, res, next) => {
   //const entry = await Entry.create({ name: "test", preis: 3, datum: "2023-03-03"});
@@ -55,7 +67,6 @@ exports.getEntries = (req, res, next) => {
   }).then((entry) => {
     res.status(200).json({
       message: "Entries successfully fetched",
-
       entries: entry,
     });
   });

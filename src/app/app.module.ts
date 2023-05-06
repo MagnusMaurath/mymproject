@@ -7,7 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+import { OverlayModule } from "@angular/cdk/overlay";
 import {
   DxDataGridModule,
   DxSelectBoxModule,
@@ -16,6 +18,7 @@ import {
   DxTemplateModule,
   DxPieChartModule,
   DxChartModule,
+
 } from 'devextreme-angular';
 
 import { AppComponent } from './app.component';
@@ -48,7 +51,7 @@ import { TestbuttonComponent } from './shared/buttons/testbutton/testbutton.comp
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { YeardashboardComponent } from './dashboards/yeardashboard/yeardashboard.component';
 import { YearFilterListComponent } from './dashboards/yeardashboard/year-filter-list/year-filter-list.component';
-
+import { CreateEntryModalComponent } from './header/create-entry-modal/create-entry-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +77,8 @@ import { YearFilterListComponent } from './dashboards/yeardashboard/year-filter-
     TestbuttonComponent,
     YeardashboardComponent,
     YearFilterListComponent,
+    CreateEntryModalComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -86,6 +91,7 @@ import { YearFilterListComponent } from './dashboards/yeardashboard/year-filter-
     MatExpansionModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatDialogModule,
     HttpClientModule,
     AppRoutingModule,
     DxPieChartModule,
@@ -99,6 +105,8 @@ import { YearFilterListComponent } from './dashboards/yeardashboard/year-filter-
     DxDataGridModule,
     DxSelectBoxModule,
     DxCheckBoxModule,
+    MatMenuModule,
+    OverlayModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
