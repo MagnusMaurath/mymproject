@@ -6,7 +6,7 @@ const CategoryController = require("../controllers/categoryController");
 //router.get("/test", CategoryController.getAllCategoriesOfUser);
 router.get("", CategoryController.getAllCategories);
 router.get(
-  "/user/:userId",
+  "/user/:userId/type/:type",
   checkAuth,
   CategoryController.getAllCategoriesOfUser
 );

@@ -1,4 +1,57 @@
-<div class="card p-3">
+
+
+<div class="card p-3 createcard">
+  <form (submit)="onAddEntry(entryForm)" #entryForm="ngForm" class="mat-form">
+    <div fxLayout="row" fxLayoutAlign="center center" class="mb-3" style="width: 100%; display: flex;">
+      <button   mat-flat-button [class.buttonpressed]="!typeOfcreatedEntry" (click)="onButton1Click()" class="ausgabebutton custombutton "  style="flex-basis: 50%;">Ausgabe</button>
+      <button  mat-flat-button [class.buttonpressed]="typeOfcreatedEntry" (click)="onButton2Click()"  class="einnahmebutton custombutton"   style="flex-basis: 50%;">Eingabe</button>
+    </div>
+
+
+
+
+
+
+    <div class="form-grid">
+
+
+
+      <mat-form-field class="form-field">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" name="name" ngModel required>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Preis</mat-label>
+        <input matInput name="preis" ngModel required>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Datum</mat-label>
+        <input matInput  name="datum"   [(ngModel)]="pickedDate" [matDatepicker]="picker">
+
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Kategorie</mat-label>
+        <mat-select name="category" ngModel>
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" class="submitbtn" type="submit">Save Battle</button>
+  </form>
+
+</div>
+
+
+
+<!--<div class="card p-3">
   <h2>The Battle Create Component</h2>
   <form (submit)="onAddEntry(entryForm)" #entryForm="ngForm">
     <div class="form-group">
@@ -46,4 +99,4 @@
       Save Battle
     </button>
   </form>
-</div>
+</div>-->

@@ -25,3 +25,22 @@
   display: inline-block;
   vertical-align: middle;
 }
+
+.dx-datagrid-text-content {
+  color:red !important;
+  font-weight: 700 !important;
+}
+
+.dx-datagrid-total-footer {
+  background-color: black !important;
+}
+
+.testclass {
+  background-color: red !important;
+}
+
+::ng-deep .dx-datagrid-summary-footer {
+  background-color: red !important;
+  color: #333;
+  font-weight: bold;
+}

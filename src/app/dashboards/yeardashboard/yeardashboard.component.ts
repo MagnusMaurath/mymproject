@@ -124,7 +124,6 @@ readonly displayModes = [{ text: "Display Mode 'full'", value: 'full' }, { text:
       .subscribe((entries: Entry[]) => {
         this.entries = entries;
 
-        console.log(this.entries);
       });
 
     this.userisAuthenticated = this.authService.getIsAuth();
@@ -135,6 +134,39 @@ readonly displayModes = [{ text: "Display Mode 'full'", value: 'full' }, { text:
         this.userId = this.authService.getUserId();
       });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+  onCellPrepared (e) {
+    if (e.rowType === "data") {
+
+            e.cellElement.style.cssText = "color: white; background-color: red";
+            // or
+            e.cellElement.classList.add("my-class");
+
+    }
   }
 
 //

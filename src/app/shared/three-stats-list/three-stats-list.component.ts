@@ -7,4 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class ThreeStatsListComponent {
   @Input() stat1: number;
+  @Input() stat2: number;
+  @Input() stat3: number;
+  @Input() titel1: string;
+  @Input() titel2: string;
+  @Input() titel3: string;
 }

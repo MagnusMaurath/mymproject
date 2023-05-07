@@ -6,4 +6,6 @@ export interface Entry {
   userId: number;
   categoryId: number;
   revenue:number;
+  contractId:number;
+  vertrag:number;
 }

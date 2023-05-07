@@ -10,6 +10,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { OverlayModule } from "@angular/cdk/overlay";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import {
   DxDataGridModule,
   DxSelectBoxModule,
@@ -107,6 +109,8 @@ import { CreateEntryModalComponent } from './header/create-entry-modal/create-en
     DxCheckBoxModule,
     MatMenuModule,
     OverlayModule,
+    MatDatepickerModule,
+    MatNativeDateModule, // hier einfügen
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

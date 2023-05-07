@@ -18,7 +18,6 @@ export class MonthFilterListComponent {
     this.selectedYear = currentDate.getFullYear();
   }
 
-  //months: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   public months: any[] = [
     { value: 1, name: 'Januar' },
     { value: 2, name: 'Februar' },
@@ -41,8 +40,6 @@ export class MonthFilterListComponent {
 
   onMonthSelected() {
     this.monthSelected.emit(this.selectedMonth);
-    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx:');
-    console.log('Selected month:', this.selectedMonth);
   }
 
   onYearSelected() {

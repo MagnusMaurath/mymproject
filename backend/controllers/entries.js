@@ -11,11 +11,12 @@ const Contract = db.contracts;
 exports.createEntry = (req, res, next) => {
   //const entry = Entry.create({ name: "test", preis: 3, datum: "2023-03-03"});
 
+  console.log("asdasdasd");
   const entry = req.body;
 
   console.log(entry);
   //const userId = req.params.userId;
-  /*
+
   Entry.create(entry)
   .then(() => {
     res.status(201).json({
@@ -28,7 +29,7 @@ exports.createEntry = (req, res, next) => {
       message: "Error creating entry"
     });
   });
-*/
+
 
 
 };

@@ -17,14 +17,14 @@ export class MonthDashboardComponent {
   private entriesSub: Subscription;
   userisAuthenticated = false;
   private authStatusSub: Subscription;
-  public totalEntries = 10;
-  public entriesPerPage = 10;
-  public pageSizeOptions = [1, 2, 5, 10];
   public selectedMonth: number;
   public selectedMonthName : string;
   public selectedYear: number;
-  public totalExpanses = 0;
-  mensch2 = 'Markus';
+  totals: {
+    totalExpanses: number;
+    totalRevenues: number;
+    total: number;
+  };
   categoriesSum: any[] = [];
   categoriesExpensesAndRevenues: any[] = [];
   categoriesExpensesAndRevenuesColors: any[] = [];
@@ -41,8 +41,7 @@ export class MonthDashboardComponent {
     this.userId = this.authService.getUserId();
     const today = new Date();
     this.selectedYear = today.getFullYear();
-   // this.selectedMonth = new Date().getMonth() +1;
-   this.selectedMonth = new Date().getMonth() -2;
+   this.selectedMonth = new Date().getMonth() +1;
     this.selectedMonthName = this.getMonthName(this.selectedMonth);
 
     this.entriesService.getSelectedEntries(
@@ -58,12 +57,6 @@ export class MonthDashboardComponent {
       .subscribe((entries: Entry[]) => {
         this.entries = entries;
 
-        this.totalExpanses = 0;
-        for (const entry of this.entries) {
-          if (entry.revenue == 0) {
-            this.totalExpanses += Number(entry.preis);
-          }
-        }
 
         const { categoriesExpensesAndRevenues, colors } =
           this.entriesService.calculateCategoryExpensesAndRevenues(
@@ -73,8 +66,7 @@ export class MonthDashboardComponent {
         this.categoriesExpensesAndRevenues = categoriesExpensesAndRevenues;
         this.categoriesExpensesAndRevenuesColors = colors;
         this.selectedMonthName = this.getMonthName(+this.selectedMonth);
-        console.log("Montdashboard");
-        console.log(this.entries);
+        this.totals = this.calculateTotals(this.entries);
       });
 
     this.userisAuthenticated = this.authService.getIsAuth();
@@ -85,19 +77,17 @@ export class MonthDashboardComponent {
         this.userId = this.authService.getUserId();
       });
 
+
+
   }
 
 
-  ngOnChange()
- {
-  console.log("Montdashboard onchange");
-  console.log(this.entries);
- }
 
 
 
+    ngOnChanges() {
 
-
+    }
 
 
 
@@ -114,6 +104,7 @@ export class MonthDashboardComponent {
       this.selectedYear,
       this.selectedMonth
     );
+    this.totals = this.calculateTotals(this.entries);
   }
 
   onYearSelected(year: number) {
@@ -123,6 +114,7 @@ export class MonthDashboardComponent {
       this.selectedYear,
       this.selectedMonth
     );
+    this.totals = this.calculateTotals(this.entries);
   }
 
   getMonthName(monthNumber: number): string {
@@ -169,6 +161,24 @@ export class MonthDashboardComponent {
         break;
     }
     return monthName;
+  }
+
+  calculateTotals(entries) {
+    let totalExpanses = 0;
+    let totalRevenues = 0;
+
+    for (const entry of entries) {
+      console.log(entry.name);
+      if (entry.revenue == 0) {
+        totalExpanses += Number(entry.preis);
+      } else if (entry.revenue == 1) {
+        totalRevenues += Number(entry.preis);
+      }
+    }
+
+    const total = totalRevenues - totalExpanses;
+
+    return { totalExpanses, totalRevenues, total };
   }
 
 

@@ -57,10 +57,13 @@ export class CategoriesService {
       });
   }*/
 
-  getCategories(userId: any) {
+  getExpensesCategories(userId: any, type:any) {
     this.http
       .get<{ message: string; categories: any }>(
         'http://localhost:3000/api/categories/user/' + userId
+        +
+        '/type/' +
+        type
       )
       .subscribe((categoryData) => {
         console.log(categoryData);

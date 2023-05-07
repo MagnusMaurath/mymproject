@@ -1,12 +1,12 @@
 <div class="container">
-  <!-- REIHE 1 -->
+  <!-- REIHE 1  <app-entry-create></app-entry-create> -->
 
 
-  <app-entry-create></app-entry-create>
+
   <div class="row headerbereich">
     <div class="col-8 my-auto">
       <h1 class="my-auto">
-        <strong>Deine Finanzen im <span class="maincolor"> {{ selectedMonthName  }}  {{ selectedYear  }}</span></strong>
+        <strong>Deine Finanzen imm <span class="maincolor"> {{ selectedMonthName  }}  {{ selectedYear  }}</span></strong>
       </h1>
     </div>
     <div class="col-4">
@@ -24,7 +24,12 @@
         <div class="col-12">
           <app-three-stats-list
             class=""
-            [stat1]="totalExpanses"
+            [stat1]="totals.totalExpanses"
+            [stat2]="totals.totalRevenues"
+            [stat3]="totals.total"
+            [titel1]="'Bisherige Ausgaben'"
+            [titel2]="'Bisherige Einnahmen'"
+            [titel3]="'Bilanz'"
           ></app-three-stats-list>
         </div>
 

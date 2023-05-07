@@ -12,7 +12,7 @@ import { ContractdashboardComponent } from './dashboards/contractdashboard/contr
 const routes: Routes = [
   {
     path: '',
-    component: EntryListComponent,
+    component: LoginComponent,
   },
   {
     path: 'create',

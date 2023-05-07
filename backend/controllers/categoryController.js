@@ -24,9 +24,11 @@ exports.getAllCategories = async (req, res) => {
 
 exports.getAllCategoriesOfUser = async (req, res) => {
   const userId = req.params.userId;
+  const type = req.params.type;
   Category.findAll({
     where: {
       userId: userId,
+      revenue: type,
     },
   }).then((category) => {
     console.log(category);
